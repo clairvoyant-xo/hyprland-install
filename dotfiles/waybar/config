@@ -1,0 +1,97 @@
+[
+    {
+        "name": "bar",
+        "layer": "top",
+        "position": "bottom",
+        "height": 40,
+        "modules-left": ["memory", "cpu", "pulseaudio", "idle_inhibitor"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["tray", "battery", "network#wifi", "network#ethernet", "network#disconnected", "clock"],
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+       	"hyprland/workspaces": {
+    		"on-scroll-up": "hyprctl dispatch workspace e+1",
+     		"on-scroll-down": "hyprctl dispatch workspace e-1"
+		},
+        "cpu": {
+            "format": " {usage}%",
+            "tooltip": false
+        },
+        "battery": {
+            "bat": "BAT1",
+            "adapter": "AC",
+            "interval": 10,
+            "states": {
+                "full": 100,
+                "good": 99,
+                "critical": 15
+            },
+            "format": "{icon} {capacity}% ",
+            "format-charging": " {capacity}%",
+            "format-plugged": " {capacity}%",
+            "format-full": "",
+            "format-icons": ["", "", "", "", ""]
+        },     
+        "memory": {
+            "format": " {}%",
+            "tooltip": false
+        },
+        "pulseaudio": {
+            "tooltip": false,
+            "scroll-step": 5,
+            "format": "{icon} {volume}%{format_source}",
+            "format-bluetooth": "{icon} {volume}%{format_source}",
+            "format-bluetooth-muted": " {icon}{format_source}",
+            "format-muted": " {format_source}",
+            "format-source": "   {volume}%",
+            "format-source-muted": "  ",
+            "format-icons": {
+                "headphone": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+            "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"           
+        },
+        "tray": {
+            "icon-size": 18,
+            "spacing": 10
+        },
+        "clock": {
+            "interval": 1,
+            "format": "{:%H:%M}",
+            "format-alt": "{:%Y-%m-%d}",
+            "tooltip-format": "<tt><big>{calendar}</big></tt>"
+        },
+        "network#disconnected": {
+            "tooltip-format": "No connection",
+            "format-ethernet": "",
+            "format-wifi": "",
+            "format-linked": "",
+            "format-disconnected": ""
+        },
+        "network#wifi": {
+            "interface": "wlp*",
+            "format-ethernet": "",
+            "format-wifi": "  ({signalStrength}%) ",
+            "format-linked": "",
+            "format-disconnected": "",
+            "tooltip-format": "Connected",
+        },   
+        "network#ethernet": {
+            "interface": "enp*",
+            "format-ethernet": "",
+            "format-wifi": "",
+            "format-linked": "",
+            "format-disconnected": "",
+            "tooltip-format": "Connected"
+        }
+    }
+]
