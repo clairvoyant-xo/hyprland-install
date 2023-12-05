@@ -4,7 +4,7 @@ Simple install script for installing Arch Linux with Hyprland WM. This is meant 
 # Installation
 ```
 git clone https://github.com/clairvoyant-xo/hyprland_install
-cd sway_install
+cd hyprland_install
 sudo chmod +x install.sh
 ./install.sh
 ```
