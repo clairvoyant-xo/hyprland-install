@@ -29,9 +29,10 @@ window#waybar.empty {
 }
 
 #workspaces button:hover {
-    background: transparent;
-    box-shadow: transparent;
-    transition-duration: 0s;
+    box-shadow: none;
+    text-shadow: none;
+    background: none;
+    transition: none;
 }
 
 #workspaces button.active {
