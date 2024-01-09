@@ -10,65 +10,43 @@ keymap = [
 	# Navigation
 	{ on = [ "w" ], exec = "arrow -1", desc = "Move cursor up" },
 	{ on = [ "s" ], exec = "arrow 1",  desc = "Move cursor down" },
-
+	{ on = [ "a" ], exec = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
+	{ on = [ "d" ], exec = [ "enter", "escape --visual --select" ], desc = "Enter the child directory" },
+ 
+	{ on = [ "<Up>" ],    exec = "arrow -1", desc = "Move cursor up" },
+	{ on = [ "<Down>" ],  exec = "arrow 1",  desc = "Move cursor down" },
+	{ on = [ "<Left>" ],  exec = "leave",    desc = "Go back to the parent directory" },
+	{ on = [ "<Right>" ], exec = "enter",    desc = "Enter the child directory" },
+ 
 	{ on = [ "W" ], exec = "arrow -5", desc = "Move cursor up 5 lines" },
 	{ on = [ "S" ], exec = "arrow 5",  desc = "Move cursor down 5 lines" },
 
 	{ on = [ "<S-Up>" ],   exec = "arrow -5", desc = "Move cursor up 5 lines" },
 	{ on = [ "<S-Down>" ], exec = "arrow 5",  desc = "Move cursor down 5 lines" },
 
-	{ on = [ "<C-u>" ], exec = "arrow -50%",  desc = "Move cursor up half page" },
-	{ on = [ "<C-d>" ], exec = "arrow 50%",   desc = "Move cursor down half page" },
-	{ on = [ "<C-b>" ], exec = "arrow -100%", desc = "Move cursor up one page" },
-	{ on = [ "<C-f>" ], exec = "arrow 100%",  desc = "Move cursor down one page" },
-
-	{ on = [ "<C-PageUp>" ],   exec = "arrow -50%",  desc = "Move cursor up half page" },
-	{ on = [ "<C-PageDown>" ], exec = "arrow 50%",   desc = "Move cursor down half page" },
-	{ on = [ "<PageUp>" ],     exec = "arrow -100%", desc = "Move cursor up one page" },
-	{ on = [ "<PageDown>" ],   exec = "arrow 100%",  desc = "Move cursor down one page" },
-
-	{ on = [ "a" ], exec = [ "leave", "escape --visual --select" ], desc = "Go back to the parent directory" },
-	{ on = [ "d" ], exec = [ "enter", "escape --visual --select" ], desc = "Enter the child directory" },
-
-	{ on = [ "A" ], exec = "back",    desc = "Go back to the previous directory" },
-	{ on = [ "D" ], exec = "forward", desc = "Go forward to the next directory" },
-
-	{ on = [ "<A-w>" ], exec = "seek -5", desc = "Seek up 5 units in the preview" },
-	{ on = [ "<A-s>" ], exec = "seek 5",  desc = "Seek down 5 units in the preview" },
-	{ on = [ "<A-PageUp>" ],   exec = "seek -5", desc = "Seek up 5 units in the preview" },
-	{ on = [ "<A-PageDown>" ], exec = "seek 5",  desc = "Seek down 5 units in the preview" },
-
-	{ on = [ "<Up>" ],    exec = "arrow -1", desc = "Move cursor up" },
-	{ on = [ "<Down>" ],  exec = "arrow 1",  desc = "Move cursor down" },
-	{ on = [ "<Left>" ],  exec = "leave",    desc = "Go back to the parent directory" },
-	{ on = [ "<Right>" ], exec = "enter",    desc = "Enter the child directory" },
-
 	{ on = [ "e", "e" ], exec = "arrow -99999999", desc = "Move cursor to the top" },
-	{ on = [ "E" ],      exec = "arrow 99999999",  desc = "Move cursor to the bottom" },
+	{ on = [ "e", "E" ],      exec = "arrow 99999999",  desc = "Move cursor to the bottom" },
 
 	# Selection
 	{ on = [ "<Tab>" ], exec = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
-	{ on = [ "v" ],       exec = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
-	{ on = [ "V" ],       exec = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
 	{ on = [ "<C-a>" ],   exec = "select_all --state=true",            desc = "Select all files" },
-	{ on = [ "<C-r>" ],   exec = "select_all --state=none",            desc = "Inverse selection of all files" },
+	{ on = [ "<C-s>" ],   exec = "select_all --state=none",            desc = "Inverse selection of all files" },
 
 	# Operation
 	{ on = [ "<Space>" ],   exec = "open",                                                 desc = "Open the selected files" },
 	{ on = [ "<C-Space>" ], exec = "open --interactive",                                   desc = "Open the selected files interactively" },
-	{ on = [ "z" ],         exec = [ "yank", "escape --visual --select" ],                 desc = "Copy the selected files" },
-	{ on = [ "x" ],         exec = [ "yank --cut", "escape --visual --select" ],           desc = "Cut the selected files" },
-	{ on = [ "f" ],         exec = "paste",                                                desc = "Paste the files" },
-	{ on = [ "F" ],         exec = "paste --force",                                        desc = "Paste the files (overwrite if the destination exists)" },
+	{ on = [ "e", "z" ],         exec = [ "yank", "escape --visual --select" ],                 desc = "Copy the selected files" },
+	{ on = [ "e", "x" ],         exec = [ "yank --cut", "escape --visual --select" ],           desc = "Cut the selected files" },
+	{ on = [ "e", "c" ],         exec = "paste",                                                desc = "Paste the files" },
+	{ on = [ "e", "C" ],         exec = "paste --force",                                        desc = "Paste the files (overwrite if the destination exists)" },
 	{ on = [ "-" ],         exec = "link",                                                 desc = "Symlink the absolute path of files" },
 	{ on = [ "_" ],         exec = "link --relative",                                      desc = "Symlink the relative path of files" },
-	{ on = [ "k" ],         exec = [ "remove", "escape --visual --select" ],               desc = "Move the files to the trash" },
-	{ on = [ "K" ],         exec = [ "remove --permanently", "escape --visual --select" ], desc = "Permanently delete the files" },
+	{ on = [ "e", "D" ],         exec = [ "remove --permanently", "escape --visual --select" ], desc = "Permanently delete the files" },
 	{ on = [ "h" ],         exec = "create",                                               desc = "Create a file or directory (ends with / for directories)" },
 	{ on = [ "r" ],         exec = "rename",                                               desc = "Rename a file or directory" },
 	{ on = [ ";" ],         exec = "shell",                                                desc = "Run a shell command" },
 	{ on = [ ":" ],         exec = "shell --block",                                        desc = "Run a shell command (block the UI until the command finishes)" },
-	{ on = [ "<A-e>" ],         exec = "hidden toggle",                                        desc = "Toggle the visibility of hidden files" },
+	{ on = [ "e", "r" ],         exec = "hidden toggle",                                        desc = "Toggle the visibility of hidden files" },
 	{ on = [ "o" ],         exec = "search fd",                                            desc = "Search files by name using fd" },
 	{ on = [ "O" ],         exec = "search rg",                                            desc = "Search files by content using ripgrep" },
 	{ on = [ "<C-o>" ],     exec = "search none",                                          desc = "Cancel the ongoing search" },
